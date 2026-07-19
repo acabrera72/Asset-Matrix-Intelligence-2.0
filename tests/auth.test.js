@@ -6,7 +6,7 @@ const app = require('../src/app');
 require('dotenv').config();
 
 beforeAll(async () => {
-    // Usar la BD de Atlas pero apuntando a 'assetmatrix_test'
+    // Se utilizóla BD de Atlas pero apuntando a 'assetmatrix_test'
     // Reemplazamos 'assetmatrix' por 'assetmatrix_test' en la URI
     let testUri = process.env.MONGODB_URI;
     if (testUri) {
@@ -14,19 +14,19 @@ beforeAll(async () => {
     } else {
         testUri = 'mongodb://localhost:27017/assetmatrix_test';
     }
-    
+
     mongoose.set('strictQuery', false);
     await mongoose.connect(testUri);
 });
 
 afterAll(async () => {
-    // Limpiar la base de datos de prueba y cerrar conexión
+    //  Se limpia la base de datos de prueba y cerrar conexión
     await mongoose.connection.db.dropDatabase();
     await mongoose.connection.close();
 });
 
 describe('Autenticación y Seguridad (Auth)', () => {
-    
+
     const testUser = {
         name: 'Usuario Test',
         email: 'test@ejemplo.com',
@@ -52,9 +52,8 @@ describe('Autenticación y Seguridad (Auth)', () => {
                 password: 'password123'
             });
 
-        expect(res.statusCode).toEqual(400); // 400 Bad Request
+        expect(res.statusCode).toEqual(400);
         expect(res.body.success).toBe(false);
-        // Validar que Zod fue quien detuvo la petición
         expect(res.body.errors[0].path).toBe('body.email');
     });
 

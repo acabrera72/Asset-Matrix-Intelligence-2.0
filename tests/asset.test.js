@@ -14,11 +14,11 @@ beforeAll(async () => {
     } else {
         testUri = 'mongodb://localhost:27017/assetmatrix_test';
     }
-    
+
     mongoose.set('strictQuery', false);
     await mongoose.connect(testUri);
 
-    // Crear un usuario de prueba para poder obtener un token (ya que Assets está protegido)
+    // Se crea un usuario de prueba para poder obtener un token (ya que Assets está protegido)
     const res = await request(app)
         .post('/api/auth/register')
         .send({
@@ -26,7 +26,7 @@ beforeAll(async () => {
             email: 'inversor@ejemplo.com',
             password: 'password123'
         });
-    
+
     userToken = res.body.token;
     userId = res.body.user.id;
 });
@@ -73,10 +73,10 @@ describe('Módulo de Activos (Assets)', () => {
             .set('Authorization', `Bearer ${userToken}`)
             .send({
                 ...newAsset,
-                type: 'moneda_falsa' // Este tipo no está en el enum
+                type: 'moneda_falsa'
             });
 
-        expect(res.statusCode).toEqual(400); // Bad Request por Zod
+        expect(res.statusCode).toEqual(400);
         expect(res.body.success).toBe(false);
         expect(res.body.errors[0].path).toBe('body.type');
     });
