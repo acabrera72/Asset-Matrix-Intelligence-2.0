@@ -15,16 +15,16 @@ const startServer = async () => {
         // 1. Conexión a MongoDB (Ignoramos el warning de strictQuery si aparece en Mongoose 7/8)
         mongoose.set('strictQuery', false);
         await mongoose.connect(MONGODB_URI);
-        console.log('✅ Conexión a la Base de Datos (MongoDB) establecida correctamente.');
+        console.log('Conexión a la Base de Datos (MongoDB) establecida correctamente.');
 
         // 2. Arrancar el servidor
         server.listen(PORT, () => {
-            console.log(`🚀 Servidor ejecutándose en: http://localhost:${PORT}`);
-            console.log(`🩺 Health check disponible en: http://localhost:${PORT}/api/health`);
+            console.log(`Servidor ejecutándose en: http://localhost:${PORT}`);
+            console.log(`Health check disponible en: http://localhost:${PORT}/api/health`);
         });
 
     } catch (error) {
-        console.error('❌ Error fatal al iniciar el servidor:', error.message);
+        console.error('Error fatal al iniciar el servidor:', error.message);
         process.exit(1);
     }
 };
