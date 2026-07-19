@@ -24,7 +24,7 @@ const assetSchema = new mongoose.Schema({
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true // Cada activo debe pertenecer a un usuario
+        required: true
     }
 }, {
     timestamps: true

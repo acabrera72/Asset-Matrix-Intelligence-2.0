@@ -37,7 +37,6 @@ const router = express.Router();
  *         price: 65000
  */
 
-// Todas las rutas debajo de esta línea usarán el middleware protect
 router.use(protect);
 
 /**

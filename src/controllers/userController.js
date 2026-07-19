@@ -5,14 +5,14 @@ const User = require('../models/User');
 // @access  Público (por ahora)
 exports.getUsers = async (req, res, next) => {
     try {
-        const users = await User.find().select('-password'); // Excluimos la contraseña
+        const users = await User.find().select('-password');
         res.status(200).json({
             success: true,
             count: users.length,
             data: users
         });
     } catch (error) {
-        next(error); // Pasamos el error al middleware global
+        next(error);
     }
 };
 
@@ -21,10 +21,8 @@ exports.getUsers = async (req, res, next) => {
 // @access  Público
 exports.createUser = async (req, res, next) => {
     try {
-        // En un futuro aquí validaremos con Zod antes de guardar
         const user = await User.create(req.body);
         
-        // No devolver la contraseña en la respuesta
         const userResponse = user.toObject();
         delete userResponse.password;
 

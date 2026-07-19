@@ -7,7 +7,6 @@ exports.getPortfolioAnalytics = async (req, res, next) => {
     try {
         const userId = req.user.id;
 
-        // Buscar todos los activos del usuario
         const assets = await Asset.find({ owner: userId });
 
         if (assets.length === 0) {
@@ -22,7 +21,6 @@ exports.getPortfolioAnalytics = async (req, res, next) => {
             });
         }
 
-        // Variables analíticas
         let totalValue = 0;
         const valueByType = {
             crypto: 0,
@@ -32,7 +30,6 @@ exports.getPortfolioAnalytics = async (req, res, next) => {
             other: 0
         };
 
-        // Procesamiento de datos (Calculando la Inteligencia Financiera)
         assets.forEach(asset => {
             totalValue += asset.price;
             
@@ -46,7 +43,7 @@ exports.getPortfolioAnalytics = async (req, res, next) => {
         res.status(200).json({
             success: true,
             data: {
-                totalValue: parseFloat(totalValue.toFixed(2)), // Redondeado a 2 decimales
+                totalValue: parseFloat(totalValue.toFixed(2)),
                 assetCount: assets.length,
                 valueByType: {
                     crypto: parseFloat(valueByType.crypto.toFixed(2)),

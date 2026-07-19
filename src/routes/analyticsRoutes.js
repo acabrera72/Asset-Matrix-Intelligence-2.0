@@ -4,7 +4,6 @@ const { protect } = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-// Todas las rutas de análisis requieren autenticación
 router.use(protect);
 
 /**

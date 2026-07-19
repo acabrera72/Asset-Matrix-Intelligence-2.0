@@ -5,7 +5,6 @@ const Asset = require('../models/Asset');
 // @access  Privado
 exports.getAssets = async (req, res, next) => {
     try {
-        // Filtrar activos por el ID del usuario del token (req.user viene del middleware)
         const assets = await Asset.find({ owner: req.user.id });
         res.status(200).json({
             success: true,
@@ -22,7 +21,6 @@ exports.getAssets = async (req, res, next) => {
 // @access  Privado
 exports.createAsset = async (req, res, next) => {
     try {
-        // Inyectar el ID del usuario como owner del activo
         req.body.owner = req.user.id;
 
         const asset = await Asset.create(req.body);
@@ -47,7 +45,6 @@ exports.deleteAsset = async (req, res, next) => {
             return res.status(404).json({ success: false, message: 'Activo no encontrado' });
         }
 
-        // Asegurarse de que el usuario logueado sea el dueño
         if (asset.owner.toString() !== req.user.id) {
             return res.status(401).json({ success: false, message: 'No estás autorizado para eliminar este activo' });
         }
