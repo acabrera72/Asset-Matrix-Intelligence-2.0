@@ -1,19 +1,32 @@
 require('dotenv').config();
-const app = require('./app');
+const http = require('http');
 const mongoose = require('mongoose');
+const app = require('./app');
 
 const PORT = process.env.PORT || 3000;
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/assetmatrix_dev';
 
-mongoose.connect(MONGODB_URI)
-    .then(() => {
-        console.log('✅ Conexión a MongoDB establecida exitosamente.');
-        app.listen(PORT, () => {
-            console.log(`🚀 Servidor AssetMatrix corriendo en el puerto ${PORT}`);
-            console.log(`📚 Documentación Swagger en http://localhost:${PORT}/api-docs`);
+// Creamos el servidor HTTP usando la aplicación de Express
+const server = http.createServer(app);
+
+// Función para inicializar la base de datos y luego el servidor
+const startServer = async () => {
+    try {
+        // 1. Conexión a MongoDB (Ignoramos el warning de strictQuery si aparece en Mongoose 7/8)
+        mongoose.set('strictQuery', false);
+        await mongoose.connect(MONGODB_URI);
+        console.log('✅ Conexión a la Base de Datos (MongoDB) establecida correctamente.');
+
+        // 2. Arrancar el servidor
+        server.listen(PORT, () => {
+            console.log(`🚀 Servidor ejecutándose en: http://localhost:${PORT}`);
+            console.log(`🩺 Health check disponible en: http://localhost:${PORT}/api/health`);
         });
-    })
-    .catch((error) => {
-        console.error('❌ Error conectando a MongoDB:', error.message);
+
+    } catch (error) {
+        console.error('❌ Error fatal al iniciar el servidor:', error.message);
         process.exit(1);
-    });
+    }
+};
+
+startServer();
