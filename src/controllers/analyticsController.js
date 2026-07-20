@@ -1,6 +1,6 @@
 const Asset = require('../models/Asset');
 
-// @desc    Obtener un resumen financiero (Inteligencia de Portafolio)
+// @desc    Obtencion de un resumen financiero 
 // @route   GET /api/analytics/portfolio
 // @access  Privado
 exports.getPortfolioAnalytics = async (req, res, next) => {
@@ -32,7 +32,7 @@ exports.getPortfolioAnalytics = async (req, res, next) => {
 
         assets.forEach(asset => {
             totalValue += asset.price;
-            
+
             if (valueByType[asset.type] !== undefined) {
                 valueByType[asset.type] += asset.price;
             } else {

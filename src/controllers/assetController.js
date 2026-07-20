@@ -1,6 +1,6 @@
 const Asset = require('../models/Asset');
 
-// @desc    Obtener todos los activos del usuario logueado
+// @desc    Obtencion de todos los activos
 // @route   GET /api/assets
 // @access  Privado
 exports.getAssets = async (req, res, next) => {

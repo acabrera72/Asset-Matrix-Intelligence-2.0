@@ -7,7 +7,7 @@ const generateToken = (id) => {
     });
 };
 
-// @desc    Registrar un nuevo usuario (reemplaza createUser antiguo)
+// @desc    Creación de un nuevo usuario
 // @route   POST /api/auth/register
 // @access  Público
 exports.register = async (req, res, next) => {
@@ -31,7 +31,7 @@ exports.register = async (req, res, next) => {
     }
 };
 
-// @desc    Autenticar (Login) usuario y obtener Token
+// @desc    Autenticación y obtencion de Token
 // @route   POST /api/auth/login
 // @access  Público
 exports.login = async (req, res, next) => {
