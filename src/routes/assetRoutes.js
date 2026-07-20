@@ -97,3 +97,4 @@ router.route('/').post(validate(createAssetSchema), createAsset);
 router.route('/:id').delete(deleteAsset);
 
 module.exports = router;
+
