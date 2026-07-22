@@ -16,7 +16,6 @@ const router = express.Router();
  *         - name
  *         - symbol
  *         - type
- *         - price
  *       properties:
  *         name:
  *           type: string
@@ -29,13 +28,12 @@ const router = express.Router();
  *           enum: [crypto, stock, fiat, commodity, other]
  *         price:
  *           type: number
- *           description: Precio actual
+ *           description: Precio (Opcional si es crypto, se obtiene automático de Binance)
  *       example:
- *         name: Acciones UCAB
- *         symbol: UCB
- *         type: stock
- *         price: 1953
-
+ *         name: Bitcoin
+ *         symbol: BTC
+ *         type: crypto
+ *
  */
 
 router.use(protect);
@@ -45,7 +43,7 @@ router.use(protect);
  * /api/assets:
  *   get:
  *     summary: Aquí se obtiene la lista completa de los activos guardados
- *     tags: [Assets]
+ *     tags: [Activos]
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -59,7 +57,7 @@ router.route('/').get(getAssets);
  * /api/assets:
  *   post:
  *     summary: Aquí se registra un nuevo activo en el portafolio
- *     tags: [Assets]
+ *     tags: [Activos]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -81,7 +79,7 @@ router.route('/').post(validate(createAssetSchema), createAsset);
  * /api/assets/{id}:
  *   delete:
  *     summary: Aquí se elimina un activo específico utilizando su ID
- *     tags: [Assets]
+ *     tags: [Activos]
  *     security:
  *       - bearerAuth: []
  *     parameters:

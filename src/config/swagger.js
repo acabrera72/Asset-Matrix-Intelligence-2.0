@@ -7,7 +7,7 @@ const swaggerOptions = {
         info: {
             title: 'AssetMatrix API',
             version: '1.0.0',
-            description: 'API REST de Alta Fidelidad para el Monitoreo Global de Activos Bursátiles y Criptográficos',
+            description: 'API REST para el Monitoreo Global de Activos Bursátiles y Criptográficos',
         },
         servers: [
             {

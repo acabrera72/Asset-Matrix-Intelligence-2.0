@@ -9,8 +9,9 @@ const createAssetSchema = z.object({
         type: z.enum(['crypto', 'stock', 'fiat', 'commodity', 'other'], {
             errorMap: () => ({ message: 'Tipo de activo no válido. Opciones: crypto, stock, fiat, commodity, other' })
         }),
-        price: z.number({ required_error: 'El precio es obligatorio', invalid_type_error: 'El precio debe ser un número' })
+        price: z.number({ invalid_type_error: 'El precio debe ser un número' })
             .positive('El precio debe ser mayor a 0')
+            .optional()
     })
 });
 

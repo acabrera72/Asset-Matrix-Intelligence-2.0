@@ -11,7 +11,7 @@ router.use(protect);
  * /api/analytics/portfolio:
  *   get:
  *     summary: Aquí se calcula la inteligencia financiera y el valor total del portafolio
- *     tags: [Analytics]
+ *     tags: [Analíticas]
  *     security:
  *       - bearerAuth: []
  *     responses:

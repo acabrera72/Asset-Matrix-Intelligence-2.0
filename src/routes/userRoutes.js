@@ -39,7 +39,7 @@ const router = express.Router();
  * /api/users:
  *   get:
  *     summary: Aquí se obtiene la lista de todos los usuarios registrados
- *     tags: [Users]
+ *     tags: [Usuarios]
  *     responses:
  *       200:
  *         description: Lista de usuarios obtenida exitosamente
@@ -57,7 +57,7 @@ router.route('/').get(getUsers);
  * /api/users:
  *   post:
  *     summary: Aquí se pueden crear usuarios de forma manual
- *     tags: [Users]
+ *     tags: [Usuarios]
  *     requestBody:
  *       required: true
  *       content:

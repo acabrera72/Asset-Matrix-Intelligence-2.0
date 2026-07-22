@@ -11,7 +11,7 @@ const router = express.Router();
  * /api/auth/register:
  *   post:
  *     summary: Aquí se registran los nuevos usuarios y se obtiene un Token
- *     tags: [Auth]
+ *     tags: [Autenticación]
  *     requestBody:
  *       required: true
  *       content:
@@ -31,7 +31,7 @@ router.post('/register', validate(registerSchema), register);
  * /api/auth/login:
  *   post:
  *     summary: Aquí se inicia sesión para obtener acceso
- *     tags: [Auth]
+ *     tags: [Autenticación]
  *     requestBody:
  *       required: true
  *       content:
@@ -61,7 +61,7 @@ router.post('/login', validate(loginSchema), login);
  * /api/auth/me:
  *   get:
  *     summary: Aquí se consultan los datos del usuario que está conectado
- *     tags: [Auth]
+ *     tags: [Autenticación]
  *     security:
  *       - bearerAuth: []
  *     responses:

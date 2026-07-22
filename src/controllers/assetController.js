@@ -19,6 +19,27 @@ exports.createAsset = async (req, res, next) => {
     try {
         req.body.owner = req.user.id;
 
+        // --- INTEGRACIÓN DE API EXTERNA: Binance ---
+        // Si el activo es una criptomoneda, obtenemos el precio real automáticamente.
+        if (req.body.type === 'crypto') {
+            const response = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${req.body.symbol.toUpperCase()}USDT`);
+            if (!response.ok) {
+                return res.status(400).json({ 
+                    success: false, 
+                    message: 'Símbolo de criptomoneda no válido en Binance o no disponible.' 
+                });
+            }
+            const data = await response.json();
+            req.body.price = parseFloat(data.price);
+        } else if (!req.body.price) {
+            // Si no es crypto, el usuario debe proveer el precio
+            return res.status(400).json({
+                success: false,
+                message: 'El precio es obligatorio para activos que no son criptomonedas.'
+            });
+        }
+        // -------------------------------------------
+
         const asset = await Asset.create(req.body);
 
         res.status(201).json({
