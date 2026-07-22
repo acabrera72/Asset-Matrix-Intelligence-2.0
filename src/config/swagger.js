@@ -30,3 +30,4 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 module.exports = { swaggerUi, swaggerDocs };
+// Final adjustments

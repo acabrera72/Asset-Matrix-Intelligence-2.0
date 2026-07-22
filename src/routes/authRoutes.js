@@ -73,3 +73,4 @@ router.post('/login', validate(loginSchema), login);
 router.get('/me', protect, getMe);
 
 module.exports = router;
+// Final adjustments
