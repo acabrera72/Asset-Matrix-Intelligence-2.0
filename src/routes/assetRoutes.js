@@ -31,10 +31,11 @@ const router = express.Router();
  *           type: number
  *           description: Precio actual
  *       example:
- *         name: Bitcoin
- *         symbol: BTC
- *         type: crypto
- *         price: 65000
+ *         name: Acciones UCAB
+ *         symbol: UCB
+ *         type: stock
+ *         price: 1953
+
  */
 
 router.use(protect);
@@ -43,7 +44,7 @@ router.use(protect);
  * @swagger
  * /api/assets:
  *   get:
- *     summary: Obtener todos los activos del usuario autenticado
+ *     summary: Aquí se obtiene la lista completa de los activos guardados
  *     tags: [Assets]
  *     security:
  *       - bearerAuth: []
@@ -57,7 +58,7 @@ router.route('/').get(getAssets);
  * @swagger
  * /api/assets:
  *   post:
- *     summary: Crear un nuevo activo (asociado al usuario)
+ *     summary: Aquí se registra un nuevo activo en el portafolio
  *     tags: [Assets]
  *     security:
  *       - bearerAuth: []
@@ -79,7 +80,7 @@ router.route('/').post(validate(createAssetSchema), createAsset);
  * @swagger
  * /api/assets/{id}:
  *   delete:
- *     summary: Eliminar un activo por ID
+ *     summary: Aquí se elimina un activo específico utilizando su ID
  *     tags: [Assets]
  *     security:
  *       - bearerAuth: []

@@ -1,8 +1,6 @@
 const Asset = require('../models/Asset');
 
-// @desc    Obtencion de un resumen financiero 
-// @route   GET /api/analytics/portfolio
-// @access  Privado
+
 exports.getPortfolioAnalytics = async (req, res, next) => {
     try {
         const userId = req.user.id;

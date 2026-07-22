@@ -1,8 +1,6 @@
 const User = require('../models/User');
 
-// @desc    Obtener todos los usuarios
-// @route   GET /api/users
-// @access  Público (por ahora)
+
 exports.getUsers = async (req, res, next) => {
     try {
         const users = await User.find().select('-password');
@@ -16,9 +14,7 @@ exports.getUsers = async (req, res, next) => {
     }
 };
 
-// @desc    Crear un nuevo usuario
-// @route   POST /api/users
-// @access  Público
+
 exports.createUser = async (req, res, next) => {
     try {
         const user = await User.create(req.body);

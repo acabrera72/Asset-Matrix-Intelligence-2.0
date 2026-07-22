@@ -10,7 +10,7 @@ const router = express.Router();
  * @swagger
  * /api/auth/register:
  *   post:
- *     summary: Registrar un nuevo usuario y obtener Token
+ *     summary: Aquí se registran los nuevos usuarios y se obtiene un Token
  *     tags: [Auth]
  *     requestBody:
  *       required: true
@@ -30,7 +30,7 @@ router.post('/register', validate(registerSchema), register);
  * @swagger
  * /api/auth/login:
  *   post:
- *     summary: Iniciar sesión y obtener Token
+ *     summary: Aquí se inicia sesión para obtener acceso
  *     tags: [Auth]
  *     requestBody:
  *       required: true
@@ -60,7 +60,7 @@ router.post('/login', validate(loginSchema), login);
  * @swagger
  * /api/auth/me:
  *   get:
- *     summary: Obtener perfil del usuario autenticado
+ *     summary: Aquí se consultan los datos del usuario que está conectado
  *     tags: [Auth]
  *     security:
  *       - bearerAuth: []

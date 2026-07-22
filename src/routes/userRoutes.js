@@ -28,16 +28,17 @@ const router = express.Router();
  *           description: Rol del usuario
  *           default: user
  *       example:
- *         name: Juan Perez
- *         email: juan@ejemplo.com
- *         password: micontraseñasecreta
+ *         name: Estudiante UCAB
+ *         email: estudiante@ucab.edu.ve
+ *         password: orgullo_ucabista
+
  */
 
 /**
  * @swagger
  * /api/users:
  *   get:
- *     summary: Devuelve la lista de todos los usuarios
+ *     summary: Aquí se obtiene la lista de todos los usuarios registrados
  *     tags: [Users]
  *     responses:
  *       200:
@@ -55,7 +56,7 @@ router.route('/').get(getUsers);
  * @swagger
  * /api/users:
  *   post:
- *     summary: Crea un nuevo usuario
+ *     summary: Aquí se pueden crear usuarios de forma manual
  *     tags: [Users]
  *     requestBody:
  *       required: true

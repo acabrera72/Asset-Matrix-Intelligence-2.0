@@ -7,9 +7,7 @@ const generateToken = (id) => {
     });
 };
 
-// @desc    Creación de un nuevo usuario
-// @route   POST /api/auth/register
-// @access  Público
+
 exports.register = async (req, res, next) => {
     try {
         const { name, email, password, role } = req.body;
@@ -31,9 +29,7 @@ exports.register = async (req, res, next) => {
     }
 };
 
-// @desc    Autenticación y obtencion de Token
-// @route   POST /api/auth/login
-// @access  Público
+
 exports.login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -63,9 +59,7 @@ exports.login = async (req, res, next) => {
     }
 };
 
-// @desc    Obtener datos del usuario logueado actualmente
-// @route   GET /api/auth/me
-// @access  Privado
+
 exports.getMe = async (req, res, next) => {
     try {
         res.status(200).json({

@@ -1,8 +1,6 @@
 const Asset = require('../models/Asset');
 
-// @desc    Obtencion de todos los activos
-// @route   GET /api/assets
-// @access  Privado
+
 exports.getAssets = async (req, res, next) => {
     try {
         const assets = await Asset.find({ owner: req.user.id });
@@ -16,9 +14,7 @@ exports.getAssets = async (req, res, next) => {
     }
 };
 
-// @desc    Crear un nuevo activo para el usuario
-// @route   POST /api/assets
-// @access  Privado
+
 exports.createAsset = async (req, res, next) => {
     try {
         req.body.owner = req.user.id;
@@ -34,9 +30,7 @@ exports.createAsset = async (req, res, next) => {
     }
 };
 
-// @desc    Eliminar un activo
-// @route   DELETE /api/assets/:id
-// @access  Privado
+
 exports.deleteAsset = async (req, res, next) => {
     try {
         const asset = await Asset.findById(req.params.id);

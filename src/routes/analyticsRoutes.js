@@ -10,7 +10,7 @@ router.use(protect);
  * @swagger
  * /api/analytics/portfolio:
  *   get:
- *     summary: Obtener la inteligencia financiera y cálculos del portafolio actual
+ *     summary: Aquí se calcula la inteligencia financiera y el valor total del portafolio
  *     tags: [Analytics]
  *     security:
  *       - bearerAuth: []
