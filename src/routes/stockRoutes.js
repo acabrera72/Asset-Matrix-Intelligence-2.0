@@ -10,7 +10,7 @@ router.use(protect);
  * @swagger
  * tags:
  *   name: Stocks
- *   description: Endpoints para mercados bursátiles integrados con Alpha Vantage
+ *   description: Mercados bursátiles integrados con Alpha Vantage
  */
 
 /**

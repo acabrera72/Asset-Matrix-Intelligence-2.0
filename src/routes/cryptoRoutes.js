@@ -10,7 +10,7 @@ router.use(protect);
  * @swagger
  * tags:
  *   name: Crypto
- *   description: Endpoints para criptoactivos integrados con CoinGecko
+ *   description: Criptoactivos integrados con CoinGecko
  */
 
 /**
