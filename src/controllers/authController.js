@@ -17,8 +17,7 @@ exports.register = async (req, res, next) => {
             return res.status(400).json({ success: false, message: 'El usuario ya existe' });
         }
 
-        // --- NUEVA API EXTERNA: Validación de Email (Disify) ---
-        // Verificamos si el email es real y no es desechable/falso antes de registrar
+        // API EXTERNA: Validación de Email
         const emailValidationResponse = await fetch(`https://www.disify.com/api/email/${email}`);
         if (emailValidationResponse.ok) {
             const emailData = await emailValidationResponse.json();
@@ -29,7 +28,7 @@ exports.register = async (req, res, next) => {
                 });
             }
         }
-        // --------------------------------------------------------
+       
 
         const user = await User.create({ name, email, password, role });
 

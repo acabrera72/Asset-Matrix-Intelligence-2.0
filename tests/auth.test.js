@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const request = require('supertest');
 const app = require('../src/app');
 
-// Configurar dotenv para leer variables de entorno si hace falta
+
 require('dotenv').config();
 
 beforeAll(async () => {
-    // Se utilizóla BD de Atlas pero apuntando a 'assetmatrix_test'
-    // Reemplazamos 'assetmatrix' por 'assetmatrix_test' en la URI
+    // Se utiliza la BD de Atlas pero apuntando a 'assetmatrix_test'
+    
     let testUri = process.env.MONGODB_URI;
     if (testUri) {
         testUri = testUri.replace('assetmatrix?', 'assetmatrix_test?');

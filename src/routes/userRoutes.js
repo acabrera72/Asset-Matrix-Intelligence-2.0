@@ -1,5 +1,5 @@
 const express = require('express');
-const { getUsers, createUser } = require('../controllers/userController');
+const { getUsers, createUser, getUser, updateUser, deleteUser } = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -69,7 +69,64 @@ router.route('/').get(getUsers);
  *         description: Usuario creado exitosamente
  *       500:
  *         description: Error de servidor
- */
 router.route('/').post(createUser);
 
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   get:
+ *     summary: Obtiene un usuario por ID
+ *     tags: [Usuarios]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Datos del usuario
+ *       404:
+ *         description: Usuario no encontrado
+ *   put:
+ *     summary: Actualiza un usuario
+ *     tags: [Usuarios]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Usuario actualizado
+ *       404:
+ *         description: Usuario no encontrado
+ *   delete:
+ *     summary: Elimina un usuario
+ *     tags: [Usuarios]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Usuario eliminado
+ *       404:
+ *         description: Usuario no encontrado
+ */
+router.route('/:id').get(getUser).put(updateUser).delete(deleteUser);
 module.exports = router;

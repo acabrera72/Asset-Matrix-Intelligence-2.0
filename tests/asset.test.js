@@ -18,7 +18,7 @@ beforeAll(async () => {
     mongoose.set('strictQuery', false);
     await mongoose.connect(testUri);
 
-    // Se crea un usuario de prueba para poder obtener un token (ya que Assets está protegido)
+    // Se crea un usuario de prueba para poder obtener un token
     const res = await request(app)
         .post('/api/auth/register')
         .send({

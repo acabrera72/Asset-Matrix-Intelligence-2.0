@@ -23,6 +23,8 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/assets', require('./routes/assetRoutes'));
 app.use('/api/analytics', require('./routes/analyticsRoutes'));
+app.use('/api/stocks', require('./routes/stockRoutes'));
+app.use('/api/crypto', require('./routes/cryptoRoutes'));
 
 app.use((req, res, next) => {
     res.status(404).json({
